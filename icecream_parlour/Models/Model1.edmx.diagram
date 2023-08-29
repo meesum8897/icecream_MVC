@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="64ddfab362974a66a5956a465a7a5781" Name="Diagram1">
+        <EntityTypeShape EntityType="db_icecream_projectModel.subscription" Width="1.5" PointX="0.5" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_icecream_projectModel.user" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_icecream_projectModel.sysdiagram" Width="1.5" PointX="0.75" PointY="4.75" />
+        <AssociationConnector Association="db_icecream_projectModel.FK_users_subscription1" />
+        <EntityTypeShape EntityType="db_icecream_projectModel.feedback" Width="1.5" PointX="5.25" PointY="1.25" />
+        <EntityTypeShape EntityType="db_icecream_projectModel.order" Width="1.5" PointX="7.375" PointY="1.5" />
+        <EntityTypeShape EntityType="db_icecream_projectModel.recipe" Width="1.5" PointX="4.25" PointY="3.625" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

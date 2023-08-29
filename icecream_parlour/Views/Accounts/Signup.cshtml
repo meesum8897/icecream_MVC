@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewBag.Title = "Signup";
+    Layout = "~/Views/Shared/userlayout.cshtml";
+}
+
+<!-- Contact Start -->
+<div class="container-fluid py-5">
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <h1 class="section-title position-relative text-center mb-5">Please Register Your Account</h1>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-9">
+                <div class="contact-form bg-light rounded p-5">
+                    <div id="success"></div>
+                    @using (Html.BeginForm("Signup", "Accounts", FormMethod.Post))
+                    {
+                        <div class="control-group">
+                            <input type="text" class="form-control p-4" name="name" id="name" placeholder="Your Name" required="required" data-validation-required-message="Please enter your Name" />
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div class="control-group">
+                            <input type="email" class="form-control p-4" name="email" id="email" placeholder="Your Email" required="required" data-validation-required-message="Please enter your email" />
+                            <p class="help-block text-danger">@TempData["msg"]</p>
+                        </div>
+                        <div class="control-group">
+                            <input type="password" class="form-control p-4" name="pass" id="password" placeholder="Password" required="required" data-validation-required-message="Please enter your Password" />
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div class="control-group">
+                            <input type="text" class="form-control p-4" name="contact" id="contact" placeholder="Contact" required="required" data-validation-required-message="Please enter your Contact Number" />
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div class="control-group">
+                            <select class="form-control" name="subslist" required data-validation-required-message="Please enter Any Subscription">
+                                <option selected disabled>Select</option>
+                                <option value="1">Monthly 15$</option>
+                                <option value="2">Yearly 150$</option>
+                            </select>
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <br />
+                        <div>
+                            <button class="btn btn-primary btn-block py-3 px-5" type="submit" id="sendMessageButton">Create Account</button>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Contact End -->

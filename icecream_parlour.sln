@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.33919.361
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "icecream_parlour", "icecream_parlour\icecream_parlour.csproj", "{3F235AFE-1A3E-449F-A647-0D924B727203}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3F235AFE-1A3E-449F-A647-0D924B727203}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F235AFE-1A3E-449F-A647-0D924B727203}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F235AFE-1A3E-449F-A647-0D924B727203}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F235AFE-1A3E-449F-A647-0D924B727203}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {49FFDB13-5261-4D75-A990-29CC2543884E}
+	EndGlobalSection
+EndGlobal
