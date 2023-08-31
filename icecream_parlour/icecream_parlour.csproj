@@ -132,6 +132,7 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\feedbacksController.cs" />
     <Compile Include="Controllers\ordersController.cs" />
+    <Compile Include="Controllers\recipesController.cs" />
     <Compile Include="Controllers\subscriptionsController.cs" />
     <Compile Include="Controllers\usersController.cs" />
     <Compile Include="Controllers\WebsiteController.cs" />
@@ -591,9 +592,17 @@
     <Content Include="Views\orders\Details.cshtml" />
     <Content Include="Views\orders\Edit.cshtml" />
     <Content Include="Views\orders\Index.cshtml" />
+    <Content Include="Views\recipes\Create.cshtml" />
+    <Content Include="Views\recipes\Delete.cshtml" />
+    <Content Include="Views\recipes\Details.cshtml" />
+    <Content Include="Views\recipes\Edit.cshtml" />
+    <Content Include="Views\recipes\Index.cshtml" />
+    <Content Include="Views\Website\product.cshtml" />
+    <Content Include="Views\Website\feedback.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="front_template\Uploads\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
