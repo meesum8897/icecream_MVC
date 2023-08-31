@@ -599,6 +599,7 @@
     <Content Include="Views\recipes\Index.cshtml" />
     <Content Include="Views\Website\product.cshtml" />
     <Content Include="Views\Website\feedback.cshtml" />
+    <Content Include="Views\Website\order.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

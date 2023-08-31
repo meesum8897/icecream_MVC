@@ -55,5 +55,16 @@ namespace icecream_parlour.Controllers
             TempData["msg"] = "Thank you for Your Feedback";
             return View();
         }
+
+        public ActionResult order()
+        {
+            return View();
+        }
+
+        //[HttpPost]
+        //public ActionResult order()
+        //{
+        //    return View();
+        //}
     }
 }
