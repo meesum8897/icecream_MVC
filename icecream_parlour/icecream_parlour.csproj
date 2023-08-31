@@ -130,6 +130,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountsController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\booksController.cs" />
     <Compile Include="Controllers\feedbacksController.cs" />
     <Compile Include="Controllers\ordersController.cs" />
     <Compile Include="Controllers\recipesController.cs" />
@@ -138,6 +139,9 @@
     <Compile Include="Controllers\WebsiteController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\book.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\feedback.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -587,11 +591,6 @@
     <Content Include="Views\feedbacks\Delete.cshtml" />
     <Content Include="Views\feedbacks\Details.cshtml" />
     <Content Include="Views\feedbacks\Index.cshtml" />
-    <Content Include="Views\orders\Create.cshtml" />
-    <Content Include="Views\orders\Delete.cshtml" />
-    <Content Include="Views\orders\Details.cshtml" />
-    <Content Include="Views\orders\Edit.cshtml" />
-    <Content Include="Views\orders\Index.cshtml" />
     <Content Include="Views\recipes\Create.cshtml" />
     <Content Include="Views\recipes\Delete.cshtml" />
     <Content Include="Views\recipes\Details.cshtml" />
@@ -600,6 +599,16 @@
     <Content Include="Views\Website\product.cshtml" />
     <Content Include="Views\Website\feedback.cshtml" />
     <Content Include="Views\Website\order.cshtml" />
+    <Content Include="Views\orders\Create.cshtml" />
+    <Content Include="Views\orders\Delete.cshtml" />
+    <Content Include="Views\orders\Details.cshtml" />
+    <Content Include="Views\orders\Edit.cshtml" />
+    <Content Include="Views\orders\Index.cshtml" />
+    <Content Include="Views\books\Create.cshtml" />
+    <Content Include="Views\books\Delete.cshtml" />
+    <Content Include="Views\books\Details.cshtml" />
+    <Content Include="Views\books\Edit.cshtml" />
+    <Content Include="Views\books\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -11,7 +11,7 @@ namespace icecream_parlour.Models
 {
     using System;
     using System.Collections.Generic;
-
+    
     public partial class order
     {
         public int id { get; set; }
@@ -20,6 +20,8 @@ namespace icecream_parlour.Models
         public string address { get; set; }
         public string cost { get; set; }
         public string payment_mode { get; set; }
-        
+        public Nullable<int> book_id { get; set; }
+    
+        public virtual book book { get; set; }
     }
 }

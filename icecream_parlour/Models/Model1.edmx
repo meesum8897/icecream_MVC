@@ -5,6 +5,16 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="db_icecream_projectModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="books">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="title" Type="varchar" MaxLength="50" />
+          <Property Name="description" Type="varchar" MaxLength="100" />
+          <Property Name="image" Type="varchar" MaxLength="50" />
+          <Property Name="price" Type="float" />
+        </EntityType>
         <EntityType Name="feedback">
           <Key>
             <PropertyRef Name="id" />
@@ -25,6 +35,7 @@
           <Property Name="address" Type="varchar" MaxLength="50" />
           <Property Name="cost" Type="varchar" MaxLength="50" />
           <Property Name="payment_mode" Type="varchar" MaxLength="50" />
+          <Property Name="book_id" Type="int" />
         </EntityType>
         <EntityType Name="recipe">
           <Key>
@@ -65,6 +76,18 @@
           <Property Name="subscription_id" Type="int" />
           <Property Name="role" Type="varchar" MaxLength="50" />
         </EntityType>
+        <Association Name="FK_order_books">
+          <End Role="books" Type="Self.books" Multiplicity="0..1" />
+          <End Role="order" Type="Self.order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="books">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="order">
+              <PropertyRef Name="book_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_users_subscription1">
           <End Role="subscription" Type="Self.subscription" Multiplicity="0..1" />
           <End Role="users" Type="Self.users" Multiplicity="*" />
@@ -78,12 +101,17 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="db_icecream_projectModelStoreContainer">
+          <EntitySet Name="books" EntityType="Self.books" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="feedback" EntityType="Self.feedback" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="order" EntityType="Self.order" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="recipe" EntityType="Self.recipe" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="subscription" EntityType="Self.subscription" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_order_books" Association="Self.FK_order_books">
+            <End Role="books" EntitySet="books" />
+            <End Role="order" EntitySet="order" />
+          </AssociationSet>
           <AssociationSet Name="FK_users_subscription1" Association="Self.FK_users_subscription1">
             <End Role="subscription" EntitySet="subscription" />
             <End Role="users" EntitySet="users" />
@@ -126,6 +154,11 @@
           <EntitySet Name="feedbacks" EntityType="db_icecream_projectModel.feedback" />
           <EntitySet Name="orders" EntityType="db_icecream_projectModel.order" />
           <EntitySet Name="recipes" EntityType="db_icecream_projectModel.recipe" />
+          <EntitySet Name="books" EntityType="db_icecream_projectModel.book" />
+          <AssociationSet Name="FK_order_books" Association="db_icecream_projectModel.FK_order_books">
+            <End Role="book" EntitySet="books" />
+            <End Role="order" EntitySet="orders" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="sysdiagram">
           <Key>
@@ -169,6 +202,8 @@
           <Property Name="address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="cost" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="payment_mode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="book_id" Type="Int32" />
+          <NavigationProperty Name="book" Relationship="db_icecream_projectModel.FK_order_books" FromRole="order" ToRole="book" />
         </EntityType>
         <EntityType Name="recipe">
           <Key>
@@ -179,6 +214,29 @@
           <Property Name="price" Type="Double" />
           <Property Name="image" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityType Name="book">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="image" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="price" Type="Double" />
+          <NavigationProperty Name="orders" Relationship="db_icecream_projectModel.FK_order_books" FromRole="book" ToRole="order" />
+        </EntityType>
+        <Association Name="FK_order_books">
+          <End Type="db_icecream_projectModel.book" Role="book" Multiplicity="0..1" />
+          <End Type="db_icecream_projectModel.order" Role="order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="book">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="order">
+              <PropertyRef Name="book_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -232,6 +290,7 @@
           <EntitySetMapping Name="orders">
             <EntityTypeMapping TypeName="db_icecream_projectModel.order">
               <MappingFragment StoreEntitySet="order">
+                <ScalarProperty Name="book_id" ColumnName="book_id" />
                 <ScalarProperty Name="payment_mode" ColumnName="payment_mode" />
                 <ScalarProperty Name="cost" ColumnName="cost" />
                 <ScalarProperty Name="address" ColumnName="address" />
@@ -247,6 +306,17 @@
                 <ScalarProperty Name="image" ColumnName="image" />
                 <ScalarProperty Name="price" ColumnName="price" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="books">
+            <EntityTypeMapping TypeName="db_icecream_projectModel.book">
+              <MappingFragment StoreEntitySet="books">
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="title" ColumnName="title" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

@@ -31,5 +31,6 @@ namespace icecream_parlour.Models
         public virtual DbSet<feedback> feedbacks { get; set; }
         public virtual DbSet<order> orders { get; set; }
         public virtual DbSet<recipe> recipes { get; set; }
+        public virtual DbSet<book> books { get; set; }
     }
 }

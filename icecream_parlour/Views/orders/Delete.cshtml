@@ -52,6 +52,14 @@
             @Html.DisplayFor(model => model.payment_mode)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.book.title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.book.title)
+        </dd>
+
     </dl>
 
     @using (Html.BeginForm()) {
