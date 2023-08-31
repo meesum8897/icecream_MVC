@@ -58,7 +58,9 @@ namespace icecream_parlour.Controllers
 
         public ActionResult order()
         {
-            return View();
+            var book = db.books.ToList();
+            ViewBag.bookdata = book;
+            return View(db.books.ToList());
         }
 
         //[HttpPost]

@@ -46,16 +46,31 @@ namespace icecream_parlour.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,title,description,image,price")] book book)
+        public ActionResult Create(string Title, string description, HttpPostedFileBase file, float price)
         {
+            var book = new book();
+            book.title= Title;
+            book.description = description;
+            if (file != null)
+            {
+                var location = Server.MapPath("~/front_template/Uploads/");
+                var filename = location + file.FileName;
+
+                file.SaveAs(filename);
+                book.image = file.FileName;
+            }
+            book.price = price;
             if (ModelState.IsValid)
             {
                 db.books.Add(book);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+            }
+            else
+            {
+                TempData["msg"] = "Product Is Already Registered.";
             }
 
-            return View(book);
+            return RedirectToAction("index", "books");
         }
 
         // GET: books/Edit/5

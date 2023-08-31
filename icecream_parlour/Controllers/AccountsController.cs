@@ -51,7 +51,6 @@ namespace icecream_parlour.Controllers
                 Session["adminid"] = user.id;
                 Session["adminemail"] = user.email;
                 Session["adminname"] = user.name;
-
                 return RedirectToAction("Index", "Admin");
 
             }
@@ -97,7 +96,7 @@ namespace icecream_parlour.Controllers
                 TempData["msg"] = "Email Is Already Registered.";
                 return View();
             }
-
+            TempData["success"] = "Account Created Successfully";
             return RedirectToAction("Login");
         }
 

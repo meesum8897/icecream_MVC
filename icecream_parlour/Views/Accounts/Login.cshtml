@@ -32,6 +32,20 @@
                         </form>
                     }
                     <p class="help-block text-danger">@TempData["message"]</p>
+                    @{
+                        var alertMessage = TempData["success"] as string;
+                    }
+
+                    @if (!string.IsNullOrEmpty(alertMessage))
+                    {
+                        <script type="text/javascript">
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Successfully Registered',
+                            text: 'Your Account Has Been Created',
+                        })
+                        </script>
+                    }
                 </div>
             </div>
         </div>
